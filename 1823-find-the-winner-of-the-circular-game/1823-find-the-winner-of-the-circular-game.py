@@ -1,10 +1,14 @@
 class Solution:
     def findTheWinner(self, n: int, k: int) -> int:
-        q=collections.deque(maxlen=n)
+        a=[]
         for i in range(1,n+1):
-            q.append(i)
-        for i in range(1,n):
-            q.rotate(1-k)
-            q.popleft()
-            # print(q)
-        return q.popleft()
+            a.append(i)
+        # print(a)
+        def rec(a,start):
+            if len(a)==1:
+                return a[0]
+            index=(start+k-1)%len(a)
+            a.pop(index)
+            return rec(a,index)
+            
+        return rec(a,0)
