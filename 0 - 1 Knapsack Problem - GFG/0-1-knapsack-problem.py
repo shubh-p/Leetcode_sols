@@ -4,21 +4,20 @@ class Solution:
     
     #Function to return max value that can be put in knapsack of capacity W.
     def knapSack(self,W, wt, val, n):
-        memo = [[-1 for i in range(W + 1)] for i in range(n + 1)]
-        
-        def rec(w, n):
-            if w == 0 or n == 0:
+        memo=[[-1 for i in range(W+1)] for i in range(n+1)]
+        # print(memo)
+        def rec(wt,val,w,n):
+            if w==0 or n==0:
                 return 0
-            if memo[n][w] != -1:
+            if memo[n][w]!=-1:
                 return memo[n][w]   
-            if wt[n - 1] <= w:
-                memo[n][w] = max(val[n - 1] + rec(w - wt[n - 1], n - 1), rec(w, n - 1))
+            if wt[n-1]<=w:
+                memo[n][w] = max(val[n-1]+rec(wt,val,w-wt[n-1],n-1),rec(wt,val,w,n-1))
                 return memo[n][w]
             else:
-                memo[n][w] = rec(w, n - 1)
+                memo[n][w] = rec(wt,val,w,n-1)
                 return memo[n][w]
-        
-        return rec(W, n)
+        return rec(wt,val,W,n)
        
         # code here
 
