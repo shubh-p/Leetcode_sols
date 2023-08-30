@@ -14,7 +14,7 @@ class Solution:
             if wt[n-1]<=w:
                 memo[n][w] = max(val[n-1]+rec(wt,val,w-wt[n-1],n-1),rec(wt,val,w,n-1))
                 return memo[n][w]
-            else:
+            elif wt[n-1]>w:
                 memo[n][w] = rec(wt,val,w,n-1)
                 return memo[n][w]
         return rec(wt,val,W,n)
