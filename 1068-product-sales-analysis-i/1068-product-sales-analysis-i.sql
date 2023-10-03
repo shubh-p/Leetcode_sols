@@ -1,8 +1,3 @@
 # Write your MySQL query statement below
-SELECT DISTINCT 
-    P.product_name, S.year, S.price 
-FROM 
-    (SELECT DISTINCT product_id, year, price FROM Sales) S
-INNER JOIN
-    Product AS P
-USING (product_id);
+# Write your MySQL query statement below
+SELECT P.product_name , S.year ,S.price FROM Sales S LEFT JOIN Product P ON S.product_id = P.product_id;
