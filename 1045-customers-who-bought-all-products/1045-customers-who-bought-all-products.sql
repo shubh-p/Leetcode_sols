@@ -1,0 +1,1 @@
+SELECT customer_id FROM Customer A GROUP BY A.customer_id HAVING (COUNT(DISTINCT A.product_key))=(SELECT COUNT(product_key) FROM Product);
