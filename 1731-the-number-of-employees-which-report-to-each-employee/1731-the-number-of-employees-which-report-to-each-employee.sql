@@ -1,0 +1,1 @@
+SELECT B.employee_id,A.name,B.reports_count,B.average_age FROM (SELECT reports_to AS employee_id,COUNT(*) as reports_count,ROUND(AVG(age),0) AS average_age  FROM Employees GROUP BY reports_to HAVING reports_to IS NOT NULL) AS B LEFT JOIN Employees as A ON A.employee_id=B.employee_id ORDER BY B.employee_id;
